@@ -1,4 +1,4 @@
-import { ReactNode, useState } from 'react'
+import { ReactNode } from 'react'
 import '../globals.css'
 import {
   Roboto_Flex as Roboto,
@@ -17,25 +17,24 @@ export const metadata = {
   title: 'Search Pharma',
   description: 'Search Pharma - Perto de você',
 }
-interface MedicamentosLayoutProps {
+interface LoginLayoutProps {
   children: ReactNode
 }
 
-export default function MedicamentosLayout({
-  children,
-}: MedicamentosLayoutProps) {
+export default function CadatroLayout({ children }: LoginLayoutProps) {
   return (
     <html lang="en">
       <body
         className={`${roboto.variable} ${baiJamjure.variable} bg-gray-100 font-sans text-black`}
       >
-        <Cabecalho
-          nav="nav border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-900"
-          medicamento="hidden"
-          cosmeticos="hidden"
-          outros="hidden"
-          pesquisa="px-0"
-        />
+        <div className="hidden">
+          <Cabecalho
+            medicamento="hidden"
+            cosmeticos="color"
+            outros="hidden"
+            pesquisa="hidden"
+          />
+        </div>
         {children}
       </body>
     </html>

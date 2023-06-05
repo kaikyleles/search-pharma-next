@@ -1,18 +1,61 @@
 'use client'
 import Router, { useRouter } from 'next/navigation'
 
-export default function Cabecalho() {
+export default function Cabecalho(props: any) {
   const router = useRouter()
 
   return (
     <>
-      <nav className="border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-900">
+      <nav className={props.nav}>
         <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4">
+          {/* LOGO */}
           <a href="/" className="flex items-center">
             <span className="self-center whitespace-nowrap text-2xl font-semibold dark:text-white">
               LOGO
             </span>
           </a>
+
+          {/* Barra de Pesquisa */}
+          <form className={props.pesquisa}>
+            <label className="sr-only mb-2 text-sm font-medium text-gray-900 dark:text-white">
+              Search
+            </label>
+            <div className="relative">
+              <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                <svg
+                  aria-hidden="true"
+                  className="h-5 w-5 text-gray-500 dark:text-gray-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 30 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  ></path>
+                </svg>
+              </div>
+              <input
+                type="search"
+                id="search"
+                className="block h-9 w-96 rounded-lg border border-gray-300 bg-gray-50 p-2 pl-10 text-sm text-gray-900 focus:border-purple-500 focus:ring-purple-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-purple-500 dark:focus:ring-purple-500"
+                placeholder="Search"
+                required
+              ></input>
+              <button
+                type="submit"
+                className="absolute bottom-1 right-2 rounded-xl bg-purple-700 px-4 py-1.5 text-sm font-medium text-white hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800"
+              >
+                Search
+              </button>
+            </div>
+          </form>
+
+          {/* Links */}
+
           <div
             className="hidden w-full md:block md:w-auto"
             id="navbar-dropdown"
@@ -23,17 +66,14 @@ export default function Cabecalho() {
                 <button
                   id="dropdownNavbarLink"
                   data-dropdown-toggle="dropdownNavbar"
-                  className="flex w-full items-center justify-between rounded py-2 pl-3 pr-4 text-purple-700 hover:bg-gray-100 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:focus:text-white md:w-auto md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-blue-500"
+                  className={props.medicamento}
                 >
                   Medicamento
                 </button>
               </li>
               {/* Cosméticos */}
               <li>
-                <a
-                  href="#"
-                  className="block rounded py-2 pl-3 pr-4 text-purple-700 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-blue-500"
-                >
+                <a href="#" className={props.cosmeticos}>
                   Cosméticos
                 </a>
               </li>
@@ -42,7 +82,7 @@ export default function Cabecalho() {
                 <button
                   id="dropdownNavbarLink"
                   data-dropdown-toggle="dropdownNavbar"
-                  className="flex w-full items-center justify-between rounded py-2 pl-3 pr-4 text-gray-900 hover:bg-gray-100 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:focus:text-white md:w-auto md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-blue-500"
+                  className={props.outros}
                 >
                   Outros{' '}
                   <svg
@@ -86,10 +126,13 @@ export default function Cabecalho() {
                   </ul>
                 </div>
               </li>
-              <li>
+
+              {/* Carrinho */}
+
+              <li className={props.carrinho}>
                 <a
                   href="#"
-                  className="block rounded text-purple-700 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-blue-500"
+                  className="block rounded text-purple-700 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-purple-700 md:dark:hover:bg-transparent md:dark:hover:text-purple-500"
                 >
                   <svg
                     width="29"
@@ -113,8 +156,10 @@ export default function Cabecalho() {
                   </svg>
                 </a>
               </li>
+
               {/* Botao Lateral */}
-              <li>
+
+              <li className={props.barraLateral}>
                 <a
                   href="#"
                   className="block rounded text-purple-700 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-blue-500"
