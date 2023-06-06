@@ -1,16 +1,18 @@
 export default function page() {
+  const urlImage =
+    'https://images.unsplash.com/photo-1549964336-67d7d7d74ac2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=686&q=80'
   return (
     <>
-      <div className="flex">
-        <div className="container mx-52">
-          <div className="flex columns-12 flex-col">
-            <div className="w-full max-w-sm rounded-lg border border-gray-200 bg-white p-4 shadow dark:border-gray-700 dark:bg-gray-800 sm:p-6 md:p-8">
-              <form className="space-y-6" action="#">
-                <h5 className="text-xl font-medium text-gray-900 dark:text-white">
+      <section className="flex min-h-screen items-center justify-center bg-gray-200">
+        <div className="flex w-1/2 rounded-2xl bg-purple-20 p-5 shadow-lg">
+          <div className="w-1/2">
+            <div className="ml-9 mt-28 h-4/5 w-full max-w-sm rounded-lg border border-purple-20 bg-purple-20 sm:p-6 md:p-8">
+              <form className="w-full space-y-6 border-none" action="#">
+                <h5 className="text-2xl font-bold text-gray-900 dark:text-white">
                   Login
                 </h5>
                 <div>
-                  <label className="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
+                  <label className="mb-2 block text-sm font-medium text-gray-800 dark:text-white">
                     Seu email
                   </label>
                   <input
@@ -51,8 +53,16 @@ export default function page() {
               </form>
             </div>
           </div>
+
+          <div className="w-1/2">
+            <img
+              src={urlImage}
+              alt="Imagem Login"
+              className="w-full rounded-2xl"
+            />
+          </div>
         </div>
-      </div>
+      </section>
     </>
   )
 }
