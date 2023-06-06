@@ -1,9 +1,9 @@
 export default function page() {
   return (
     <>
-      <div className="flex">
-        <div className="container mx-52">
-          <div className="flex columns-12 flex-col">
+      <div className="bg-white h-[100vh] flex">
+        <div className="container m-auto h-[70vh] items-center bg-white rounded-md shadow-md">
+          <div className="lg:grid grid-cols-2 gap-5 items-center">
             <div className="w-full max-w-sm rounded-lg border border-gray-200 bg-white p-4 shadow dark:border-gray-700 dark:bg-gray-800 sm:p-6 md:p-8">
               <form className="space-y-6" action="#">
                 <h5 className="text-xl font-medium text-gray-900 dark:text-white">
