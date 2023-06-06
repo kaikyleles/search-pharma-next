@@ -1,7 +1,7 @@
-import React from 'react'
 import TextosH1 from '@/components/TextosH1'
 import Checkbox from '@/components/Checkbox'
 import Card from '@/components/Card'
+
 export default function Controlados() {
   return (
     <>

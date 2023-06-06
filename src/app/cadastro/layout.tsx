@@ -4,7 +4,7 @@ import {
   Roboto_Flex as Roboto,
   Bai_Jamjuree as BaiJamjure,
 } from 'next/font/google'
-import Cabecalho from '@/components/Cabecalho'
+import { Footer } from 'flowbite-react'
 
 const roboto = Roboto({ subsets: ['latin'], variable: '--font-roboto' })
 const baiJamjure = BaiJamjure({
@@ -27,14 +27,6 @@ export default function CadatroLayout({ children }: CadastrosLayoutProps) {
       <body
         className={`${roboto.variable} ${baiJamjure.variable} bg-gray-100 font-sans text-black`}
       >
-        <div className="hidden">
-          <Cabecalho
-            medicamento="hidden"
-            cosmeticos="color"
-            outros="hidden"
-            pesquisa="hidden"
-          />
-        </div>
         {children}
       </body>
     </html>

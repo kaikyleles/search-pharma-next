@@ -61,72 +61,6 @@ export default function Cabecalho(props: any) {
             id="navbar-dropdown"
           >
             <ul className="mt-4 flex flex-col rounded-lg border border-gray-100 bg-gray-50 p-4 font-medium dark:border-gray-700 dark:bg-gray-800 md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-white md:p-0 md:dark:bg-gray-900">
-              <li onClick={() => router.push('/medicamentos')}>
-                {/* Medicamento */}
-                <button
-                  id="dropdownNavbarLink"
-                  data-dropdown-toggle="dropdownNavbar"
-                  className={props.medicamento}
-                >
-                  Medicamento
-                </button>
-              </li>
-              {/* Cosméticos */}
-              <li>
-                <a href="#" className={props.cosmeticos}>
-                  Cosméticos
-                </a>
-              </li>
-              {/* Outros */}
-              <li>
-                <button
-                  id="dropdownNavbarLink"
-                  data-dropdown-toggle="dropdownNavbar"
-                  className={props.outros}
-                >
-                  Outros{' '}
-                  <svg
-                    className="ml-1 h-5 w-5"
-                    aria-hidden="true"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                      clipRule="evenodd"
-                    ></path>
-                  </svg>
-                </button>
-                <div
-                  id="dropdownNavbar"
-                  className="z-10 hidden w-44 divide-y divide-gray-100 rounded-lg bg-white font-normal shadow dark:divide-gray-600 dark:bg-gray-700"
-                >
-                  <ul
-                    className="py-2 text-sm text-black dark:text-gray-400"
-                    aria-labelledby="dropdownLargeButton"
-                  >
-                    <li>
-                      <a
-                        href="#"
-                        className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                      >
-                        Higiene Pessoal
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                      >
-                        Manicure
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-
               {/* Carrinho */}
 
               <li className={props.carrinho}>
@@ -159,7 +93,10 @@ export default function Cabecalho(props: any) {
 
               {/* Botao Lateral */}
 
-              <li className={props.barraLateral}>
+              <li
+                className={props.barraLateral}
+                onClick={() => router.push('/medicamentos')}
+              >
                 <a
                   href="#"
                   className="block rounded text-purple-700 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-blue-500"
