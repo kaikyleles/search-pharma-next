@@ -2,6 +2,7 @@ import Carrousel from '@/components/Carrousel'
 import TextosH1 from '@/components/TextosH1'
 import Cabecalho from '@/components/Cabecalho'
 import CardsOpcoes from '@/components/CardsOpcoes'
+import Footer from '@/components/Footer'
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
           <CardsOpcoes />
         </div>
       </main>
+      <Footer />
     </>
   )
 }

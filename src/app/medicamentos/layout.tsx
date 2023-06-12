@@ -5,7 +5,6 @@ import {
   Bai_Jamjuree as BaiJamjure,
 } from 'next/font/google'
 import Cabecalho from '@/components/Cabecalho'
-import { Footer } from 'flowbite-react'
 
 const roboto = Roboto({ subsets: ['latin'], variable: '--font-roboto' })
 const baiJamjure = BaiJamjure({

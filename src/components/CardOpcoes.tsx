@@ -14,7 +14,7 @@ export default function CardOpcoes(props: any) {
             </h5>
           </a>
           <a
-            href="#"
+            href="/medicamentos"
             className="inline-flex items-center rounded-lg bg-purple-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800"
           >
             Visualizar
