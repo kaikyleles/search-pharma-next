@@ -10,7 +10,7 @@ export default function Medicamentos() {
 
   useEffect(() => {
     api
-      .get('/produtos/medicamento')
+      .get('/produtos/outros')
       .then((res) => {
         setCard(res.data)
       })
@@ -18,13 +18,22 @@ export default function Medicamentos() {
         console.error('deu ruim!' + err)
       })
   }, [])
-
+  useEffect(() => {
+    api
+      .get('/produtos/outros')
+      .then((res) => {
+        setCard(res.data)
+      })
+      .catch((err) => {
+        console.error('deu ruim!' + err)
+      })
+  }, [])
   return (
     <>
       <main className="flex">
         <div className="container mx-52">
           <TextosH1
-            name="Medicamentos"
+            name="Outros"
             style="pt-12 text-3xl font-bold text-purple-700"
           ></TextosH1>
           <div className="flex flex-row">
@@ -35,10 +44,10 @@ export default function Medicamentos() {
               ></TextosH1>
 
               <Checkbox
-                name="Controlados"
+                name="Higiene pessoal"
                 style="mb-4 flex items-center pt-3 pl-3"
               />
-              <Checkbox name="Génericos" style="mb-4 flex items-center pl-3" />
+              <Checkbox name="Pele/Rosto" style="mb-4 flex items-center pl-3" />
             </div>
             <div className="flex flex-col p-10">
               <div className="flex flex-row flex-wrap">
