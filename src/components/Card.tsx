@@ -1,7 +1,6 @@
 'use client'
 
 export default function Card({ dataCard }: any) {
-  console.log(dataCard)
   return (
     <div className="m-3 w-full max-w-sm rounded-lg border border-gray-200 bg-white shadow dark:border-gray-700 dark:bg-gray-800">
       <a href="#" className="items-center justify-center">
