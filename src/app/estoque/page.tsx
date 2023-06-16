@@ -1,12 +1,15 @@
 'use client'
 import TextosH1 from '@/components/TextosH1'
-import Card from '@/components/Card'
 import api from '@/services/api'
 import { useEffect, useState } from 'react'
+import Tabela from '@/components/Tabela'
+// import Dropdown from '@/components/Dropdown'
+import { Dropdown, div } from 'flowbite-react'
 
-export default function Medicamentos() {
+export default function Estoque() {
   const BASE_URL = '/produtos'
   const [produto, setProduto] = useState()
+  const [input, setInput] = useState('')
 
   useEffect(() => {
     setarPadrao()
@@ -23,6 +26,34 @@ export default function Medicamentos() {
       })
   }
 
+  const filtrar = (event: any) => {
+    event.preventDefault()
+    if (input !== '')
+      api
+        .get(BASE_URL + `/${input}`)
+        .then((res) => {
+          return setProduto(res.data)
+        })
+        .catch((err) => {
+          console.error('deu ruim!' + err)
+        })
+    else setarPadrao()
+  }
+
+  const filtrarPorTipo = (value: string) => {
+    if (value !== '') {
+      api
+        .get(BASE_URL + `/tipo/${value}`)
+        .then((res) => {
+          close()
+          return setProduto(res.data)
+        })
+        .catch((err) => {
+          console.error('deu ruim!' + err)
+        })
+    } else setarPadrao()
+  }
+
   return (
     <>
       <main className="flex">
@@ -31,7 +62,7 @@ export default function Medicamentos() {
             name="Produtos"
             style="pt-12 pb-5 text-3xl font-bold text-purple-700"
           ></TextosH1>
-          <div className="flex flex-row flex-wrap content-evenly items-center justify-between rounded-2xl bg-purple-200 p-3">
+          <div className="flex flex-row flex-wrap content-evenly items-center justify-between rounded-2xl bg-gray-200 p-3">
             <div className="flex flex-col">
               <form className="px-0">
                 <label className="sr-only mb-2 text-sm font-medium text-gray-900 dark:text-white">
@@ -60,11 +91,13 @@ export default function Medicamentos() {
                     id="search"
                     className="block h-9 w-96 rounded-lg border border-gray-300 bg-gray-50 p-2 pl-10 text-sm text-gray-900 focus:border-purple-500 focus:ring-purple-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-purple-500 dark:focus:ring-purple-500"
                     placeholder="Search"
+                    onChange={(event) => setInput(event.target.value)}
                     required
                   ></input>
                   <button
                     type="submit"
                     className="absolute bottom-1 right-2 rounded-xl bg-purple-700 px-4 py-1 text-sm font-medium text-white hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800"
+                    onClick={(event) => filtrar(event)}
                   >
                     Search
                   </button>
@@ -72,71 +105,40 @@ export default function Medicamentos() {
               </form>
             </div>
             <div className="flex flex-col">
-              <button
-                id="dropdownDefaultButton"
-                data-dropdown-toggle="dropdown"
-                className="inline-flex items-center rounded-lg bg-blue-700 px-4 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                type="button"
-              >
-                Tipos{' '}
-                <svg
-                  className="ml-2 h-4 w-4"
-                  aria-hidden="true"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M19 9l-7 7-7-7"
-                  ></path>
-                </svg>
-              </button>
-              <div
-                id="dropdown"
-                className="z-10 hidden w-44 divide-y divide-gray-100 rounded-lg bg-white shadow dark:bg-gray-700"
-              >
-                <ul
-                  className="py-2 text-sm text-gray-700 dark:text-gray-200"
-                  aria-labelledby="dropdownDefaultButton"
-                >
-                  <li>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+              <>
+                <div className="flex items-center gap-4">
+                  <Dropdown label="Tipos" size="sm" color={'purple'}>
+                    <Dropdown.Item
+                      onClick={() => {
+                        filtrarPorTipo('Medicamento')
+                      }}
                     >
-                      Dashboard
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                      Medicamento
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      onClick={() => {
+                        filtrarPorTipo('Cosmetico')
+                      }}
                     >
-                      Settings
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                      Cosmetico
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      onClick={() => {
+                        filtrarPorTipo('Outros')
+                      }}
                     >
-                      Earnings
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                      Outros
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      onClick={() => {
+                        filtrarPorTipo('')
+                      }}
                     >
-                      Sign out
-                    </a>
-                  </li>
-                </ul>
-              </div>
+                      <b>Todos</b>
+                    </Dropdown.Item>
+                  </Dropdown>
+                </div>
+              </>
             </div>
             <div className="flex flex-col">Exportar</div>
             <div className="flex flex-col">
@@ -148,50 +150,7 @@ export default function Medicamentos() {
               </a>
             </div>
           </div>
-
-          <div className="relative w-full overflow-x-auto rounded-lg pt-6">
-            <table className="w-full text-left text-sm text-gray-700 dark:text-gray-700">
-              <thead className="dark:bg-gray bg-purple-200 text-xs uppercase text-gray-700 text-white">
-                <tr>
-                  <th scope="col" className="px-6 py-3">
-                    Produto
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    Tipo
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    Estoque
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    Preço
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    Catálogo
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {produto?.map((dataProduto: any) => (
-                  <>
-                    <tr className="border-b bg-white dark:border-gray-700 dark:bg-gray-800">
-                      <th
-                        scope="row"
-                        className="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white"
-                      >
-                        {dataProduto.nome}
-                      </th>
-                      <td className="px-6 py-4">{dataProduto.tipo}</td>
-                      <td className="px-6 py-4">
-                        {dataProduto.quantidadeEstoque}
-                      </td>
-                      <td className="px-6 py-4">{dataProduto.preco}</td>
-                      <td className="px-6 py-4">{dataProduto.catalogo}</td>
-                    </tr>
-                  </>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <Tabela produto={produto} />
         </div>
       </main>
     </>
