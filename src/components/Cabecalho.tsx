@@ -54,9 +54,6 @@ export default function Cabecalho(props: any) {
               </button>
             </div>
           </form>
-
-          {/* Links */}
-
           <div
             className="hidden w-full md:block md:w-auto"
             id="navbar-dropdown"
@@ -96,7 +93,7 @@ export default function Cabecalho(props: any) {
 
               <li
                 className={props.barraLateral}
-                onClick={() => router.push('/medicamentos')}
+                onClick={() => router.push('/estoque')}
               >
                 <a
                   href="#"

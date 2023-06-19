@@ -4,6 +4,7 @@ import {
   Roboto_Flex as Roboto,
   Bai_Jamjuree as BaiJamjure,
 } from 'next/font/google'
+import { QueryClientProvider } from 'react-query'
 
 const roboto = Roboto({ subsets: ['latin'], variable: '--font-roboto' })
 const baiJamjure = BaiJamjure({

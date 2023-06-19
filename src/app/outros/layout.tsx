@@ -17,13 +17,11 @@ export const metadata = {
   title: 'Search Pharma',
   description: 'Search Pharma - Perto de você',
 }
-interface MedicamentosLayoutProps {
+interface OutrosLayoutProps {
   children: ReactNode
 }
 
-export default function MedicamentosLayout({
-  children,
-}: MedicamentosLayoutProps) {
+export default function OutrosLayout({ children }: OutrosLayoutProps) {
   return (
     <html lang="en">
       <body

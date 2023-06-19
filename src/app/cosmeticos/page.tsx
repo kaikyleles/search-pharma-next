@@ -5,7 +5,7 @@ import api from '@/services/api'
 import { useEffect, useState } from 'react'
 
 export default function Medicamentos() {
-  const BASE_URL = '/medicamento'
+  const BASE_URL = '/cosmetico'
   const [card, setCard] = useState()
 
   useEffect(() => {
@@ -23,10 +23,10 @@ export default function Medicamentos() {
       })
   }
 
-  const setarControlado = (event: any) => {
+  const setarBatom = (event: any) => {
     if (event.target.checked) {
       api
-        .get(BASE_URL + '/filtrar/controlado')
+        .get(BASE_URL + '/filtrar/batom')
         .then((res) => {
           setCard(res.data)
         })
@@ -38,10 +38,10 @@ export default function Medicamentos() {
     }
   }
 
-  const setarGenerico = (event: any) => {
+  const setarDelineado = (event: any) => {
     if (event.target.checked) {
       api
-        .get(BASE_URL + '/filtrar/generico')
+        .get(BASE_URL + '/filtrar/delineado')
         .then((res) => {
           setCard(res.data)
         })
@@ -58,7 +58,7 @@ export default function Medicamentos() {
       <main className="flex">
         <div className="container mx-52">
           <TextosH1
-            name="Medicamentos"
+            name="Cosméticos"
             style="pt-12 text-3xl font-bold text-purple-700"
           ></TextosH1>
           <div className="flex flex-row">
@@ -74,13 +74,13 @@ export default function Medicamentos() {
                   type="checkbox"
                   value=""
                   className="h-4 w-4 rounded border-white bg-white text-purple-600 focus:ring-2 focus:ring-purple-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600"
-                  onClick={(event) => setarControlado(event)}
+                  onClick={(event) => setarBatom(event)}
                 ></input>
                 <label
                   htmlFor="default-checkbox"
                   className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                 >
-                  Controlado
+                  Batom
                 </label>
               </div>
 
@@ -90,13 +90,13 @@ export default function Medicamentos() {
                   type="checkbox"
                   value=""
                   className="h-4 w-4 rounded border-white bg-white text-purple-600 focus:ring-2 focus:ring-purple-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600"
-                  onClick={(event) => setarGenerico(event)}
+                  onClick={(event) => setarDelineado(event)}
                 ></input>
                 <label
                   htmlFor="default-checkbox"
                   className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                 >
-                  Génerico
+                  Delineado
                 </label>
               </div>
             </div>

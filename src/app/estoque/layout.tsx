@@ -31,10 +31,9 @@ export default function MedicamentosLayout({
       >
         <Cabecalho
           nav="nav border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-900"
-          medicamento="hidden"
-          cosmeticos="hidden"
-          outros="hidden"
-          pesquisa="px-0"
+          pesquisa="hidden"
+          carrinho="hidden
+          "
         />
         {children}
         <footer className="relative bottom-0 mt-20 w-full bg-gray-300 shadow dark:bg-gray-800">
